@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: todo-app
+  namespace: todo
+spec:
+  type: LoadBalancer
+  selector:
+    app: todo-app
+  ports:
+  # Default port used by the image
+  - port: 80
+    targetPort: 5000
+

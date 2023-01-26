@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-myapp
+  namespace: todo
+spec:
+  type: ClusterIP
+  selector:
+    app: mysql-todo-app
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306

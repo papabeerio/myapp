@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: mysql-todo-app
+    run: mysql-todo-app
+  name: mysql-todo-app
+  namespace: todo
+spec:
+  containers:
+  - env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: root
+    - name: MYSQL_DATABASE
+      value: flask
+    image: mysql:8
+    name: mysql-todo
