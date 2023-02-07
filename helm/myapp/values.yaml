@@ -11,5 +11,7 @@ todo_app:
   name: todo-app
   image: mfermie/myapp:1.0.2
 
-#mariadb:
-#  auth.database: flask
+mariadb:
+  auth:
+    rootPassword: testing123
+    database: flask

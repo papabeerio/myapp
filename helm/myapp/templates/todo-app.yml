@@ -18,3 +18,7 @@ spec:
     image: {{ .Values.todo_app.image }}
     imagePullPolicy: IfNotPresent
     name: {{ .Values.todo_app.name }}
+  initContainers:
+  - name: init-myservice
+    image: busybox:1.28
+    command: ['sh', '-c', "until nslookup my-release-mysql.default.svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
