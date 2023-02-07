@@ -10,7 +10,7 @@ service:
 
 todo_app:
   name: todo-app
-  image: mfermie/myapp:1.0.1
+  image: mfermie/myapp:1.0.2
 
 #mysql:
 #  auth.database: flask
