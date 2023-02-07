@@ -19,7 +19,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: docker build python
       run: |
-        docker build . -t mfermie/myapp:1.0.1
+        docker build . -t mfermie/myapp:1.0.2
     - name: docker push
       run: |
-        docker push mfermie/myapp:1.0.1
+        docker push mfermie/myapp:1.0.2
