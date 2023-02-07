@@ -11,7 +11,7 @@ spec:
       value: my-release-mysql.default.svc.cluster.local
     - name: MYSQL_USER
       value: root0
-    - name: MYSQL_PASSWORD
+    - name: MYSQL_PASS
       value: Dy348PYssz
     - name: MYSQL_DB
       value: flask
