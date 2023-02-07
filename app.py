@@ -2,9 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
-from os import environ
+from os import getenv
 
-my_dbhost = environ['MYSQL_HOST']
+my_dbhost = getenv('MYSQL_HOST', default='localhost')
+my_dbuser = getenv('MYSQL_USER', default='root')
+my_dbpass = getenv('MYSQL_PASS', default='root')
 
 app = Flask(__name__)
 
@@ -18,8 +20,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 app.config['MYSQL_HOST'] = my_dbhost
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_USER'] = my_dbuser
+app.config['MYSQL_PASSWORD'] = my_dbpass
 app.config['MYSQL_DB'] = 'flask'
 
 my = MySQL(app)

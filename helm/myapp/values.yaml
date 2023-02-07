@@ -1,0 +1,16 @@
+---
+
+service:
+  name: todo-app
+  type: LoadBalancer
+  app: myapp
+  protocol: TCP
+  port: 80
+  targetPort: 5000
+
+todo_app:
+  name: todo-app
+  image: mfermie/myapp:1.0.0
+
+#mysql:
+#  auth.database: flask

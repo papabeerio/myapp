@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: {{ .Values.todo_app.name }}
+  name: {{ .Values.todo_app.name }}
+spec:
+  containers:
+  - env:
+    - name: MYSQL_HOST
+      value: my-release-mysql.default.svc.cluster.local
+    - name: MYSQL_USER
+      value: root0
+    - name: MYSQL_PASSWORD
+      value: Dy348PYssz
+    - name: MYSQL_DB
+      value: flask
+    image: {{ .Values.todo_app.image }}
+    imagePullPolicy: IfNotPresent
+    name: {{ .Values.todo_app.name }}
