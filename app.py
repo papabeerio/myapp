@@ -12,11 +12,8 @@ app = Flask(__name__)
 
 app.app_context().push()
 
-#/// = relative path, //// = absolute path
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://root:root@{my_dbhost}/flask'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{my_dbuser}:{my_dbpass}@{my_dbhost}/flask'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 db = SQLAlchemy(app)
 
 app.config['MYSQL_HOST'] = my_dbhost
