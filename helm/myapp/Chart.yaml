@@ -5,3 +5,11 @@ version: 1.0.0
 #- name: mysql
 #  version: "9.4.8"
 #  repository: "https://charts.bitnami.com/bitnami"
+
+dependencies:
+  - name: mariadb
+    version: 11.4.6
+    repository: https://charts.bitnami.com/bitnami
+  - name: redis
+    version: 17.7.2
+    repository: https://charts.bitnami.com/bitnami

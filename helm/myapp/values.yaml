@@ -1,5 +1,4 @@
 ---
-
 service:
   name: todo-app
   type: LoadBalancer
@@ -12,5 +11,5 @@ todo_app:
   name: todo-app
   image: mfermie/myapp:1.0.2
 
-#mysql:
+#mariadb:
 #  auth.database: flask
