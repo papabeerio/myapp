@@ -1,24 +1,33 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   labels:
     app: {{ .Values.todo_app.name }}
   name: {{ .Values.todo_app.name }}
 spec:
-  containers:
-  - env:
-    - name: MYSQL_HOST
-      value: {{ .Values.mariadb.fullnameOverride }}
-    - name: MYSQL_USER
-      value: root
-    - name: MYSQL_PASS
-      value: {{ .Values.mariadb.auth.rootPassword }}
-    - name: MYSQL_DB
-      value: {{ .Values.mariadb.auth.database }}
-    image: {{ .Values.todo_app.image }}
-    imagePullPolicy: IfNotPresent
-    name: {{ .Values.todo_app.name }}
-  initContainers:
-  - name: init-myservice
-    image: busybox:1.28
-    command: ['sh', '-c', "sleep 10 ; until nslookup {{ .Values.mariadb.fullnameOverride }}; do echo waiting for myservice; sleep 5 ; done"]
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.todo_app.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.todo_app.name }}
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_HOST
+          value: {{ .Values.mariadb.fullnameOverride }}
+        - name: MYSQL_USER
+          value: root
+        - name: MYSQL_PASS
+          value: {{ .Values.mariadb.auth.rootPassword }}
+        - name: MYSQL_DB
+          value: {{ .Values.mariadb.auth.database }}
+        image: {{ .Values.todo_app.image }}
+        imagePullPolicy: IfNotPresent
+        name: {{ .Values.todo_app.name }}
+      initContainers:
+      - name: init-myservice
+        image: busybox:1.28
+        command: ['sh', '-c', "sleep 10 ; until nslookup {{ .Values.mariadb.fullnameOverride }}; do echo waiting for myservice; sleep 5 ; done"]
