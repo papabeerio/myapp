@@ -8,17 +8,17 @@ spec:
   containers:
   - env:
     - name: MYSQL_HOST
-      value: my-release-mysql.default.svc.cluster.local
+      value: {{ .Values.mariadb.fullnameOverride }}
     - name: MYSQL_USER
       value: root
     - name: MYSQL_PASS
-      value: Dy348PYssz
+      value: {{ .Values.mariadb.auth.rootPassword }}
     - name: MYSQL_DB
-      value: flask
+      value: {{ .Values.mariadb.auth.database }}
     image: {{ .Values.todo_app.image }}
     imagePullPolicy: IfNotPresent
     name: {{ .Values.todo_app.name }}
   initContainers:
   - name: init-myservice
     image: busybox:1.28
-    command: ['sh', '-c', "until nslookup my-release-mysql.default.svc.cluster.local; do echo waiting for myservice; sleep 2; done"]
+    command: ['sh', '-c', "until nslookup {{ .Values.mariadb.fullnameOverride }}; do sleep 10 ; echo waiting for myservice; done"]

@@ -15,3 +15,6 @@ mariadb:
   auth:
     rootPassword: testing123
     database: flask
+  primary:
+    name: mariadeebee
+  fullnameOverride: mariadeebee
