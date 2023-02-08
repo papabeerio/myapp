@@ -2,10 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: mysql-todo-app
-    run: mysql-todo-app
-  name: mysql-todo-app
-  namespace: todo
+    app: todo-mysql
+  name: todo-mysql
 spec:
   containers:
   - env:
@@ -14,4 +12,4 @@ spec:
     - name: MYSQL_DATABASE
       value: flask
     image: mysql:8
-    name: mysql-todo
+    name: todo-mysql
