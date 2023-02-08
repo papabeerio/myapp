@@ -21,4 +21,4 @@ spec:
   initContainers:
   - name: init-myservice
     image: busybox:1.28
-    command: ['sh', '-c', "until nslookup {{ .Values.mariadb.fullnameOverride }}; do sleep 10 ; echo waiting for myservice; done"]
+    command: ['sh', '-c', "sleep 10 ; until nslookup {{ .Values.mariadb.fullnameOverride }}; do echo waiting for myservice; sleep 5 ; done"]
