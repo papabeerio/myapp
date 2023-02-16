@@ -18,7 +18,7 @@ db = SQLAlchemy(app)
 
 app.config['MYSQL_HOST'] = my_dbhost
 app.config['MYSQL_USER'] = my_dbuser
-app.config['MYSQL_PASSWORD'] = my_dbpass
+app.config['MYSQL_PASS'] = my_dbpass
 app.config['MYSQL_DB'] = 'flask'
 
 my = MySQL(app)

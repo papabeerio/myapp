@@ -10,7 +10,7 @@ services:
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_PASS: root
       MYSQL_DB: flask
     depends_on:
       mysql:
