@@ -102,8 +102,9 @@ module "db" {
   instance_class       = "db.t3.micro"
   allocated_storage    = 5
   storage_encrypted    = false
-
+  skip_final_snapshot  = true
   create_random_password = false
+
   db_name  = "flask"
   username = "user"
   password = "password"
